@@ -6,8 +6,6 @@
 <title>Do Código à Inovação!</title>
 <link rel="icon" type="image/x-icon" href="img/favicon.ico.jpeg">
 <link rel="stylesheet" href="styles.css" />
-<style>
-</style>
 </head>
 <body>
 
@@ -80,15 +78,14 @@
                     <button class="btn-cert" type="button" aria-label="Visualizar certificado Wizard">Visualizar Certificado</button>
                 </article>
             </li>
-           <li class="carousel-slide">
-    <article class="cert-card" 
-    data-link="img/Computação_Fundamentos-Certificado_digital_3384081.pdf" tabindex="0">
-        <img src="img/Logo-IFRS.png" alt="Logo Instituição Federal do Rio Grande do Sul" loading="lazy">
-        <h3>Computação Fundamentos</h3>
-        <p>Instituição Federal do Rio Grande do Sul</p>
-        <button class="btn-cert" type="button" aria-label="Visualizar certificado Computação Fundamentos">Visualizar Certificado</button>
-    </article>
-</li>
+            <li class="carousel-slide">
+                <article class="cert-card" 
+                data-link="img/Computação_Fundamentos-Certificado_digital_3384081.pdf" tabindex="0">
+                    <img src="img/Logo-IFRS.png" alt="Logo Instituição Federal do Rio Grande do Sul" loading="lazy">
+                    <h3>Computação Fundamentos</h3>
+                    <p>Instituição Federal do Rio Grande do Sul</p>
+                    <button class="btn-cert" type="button" aria-label="Visualizar certificado Computação Fundamentos">Visualizar Certificado</button>
+                </article>
             </li>
             <li class="carousel-slide">
                 <article class="cert-card" 
@@ -161,6 +158,7 @@
                     <p>GYN Cursos</p>
                     <button class="btn-cert" type="button" aria-label="Visualizar certificado Lógica de Programação">Visualizar Certificado</button>
                 </article>
+            </li>
         </ul>
     </div>
     <button class="carousel-button prev">❮</button>
@@ -168,16 +166,40 @@
 </div>
     </section>
 
-    <section id="contato" aria-label="Contato">
-        <h2 style="text-align:center; margin:3rem 0 2rem; font-family: 'Oswald', sans-serif; font-size: 2rem;">CONTATO</h2>
-        <p style="text-align:center; font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem;">
-          Vamos conversar? Me envie um email ou siga-me nas redes sociais!
-        </p>
-        <div style="display:flex; justify-content:center; gap:2rem; font-size:1.3rem;">
-            <a href="mailto:tayna.cristina215@gmail.com" style="color:#f0a500; text-decoration:none;" aria-label="Enviar e-mail para Tayná">✉️ Email</a>
-            <a href="https://www.linkedin.com/in/tayn%C3%A1-costa-25231b347/" target="_blank" rel="noopener" style="color:#f0a500; text-decoration:none;" aria-label="LinkedIn de Tayná">🔗 LinkedIn</a>
-            <a href="https://github.com/Tayna-Costa" target="_blank" rel="noopener" style="color:#f0a500; text-decoration:none;" aria-label="GitHub de Tayná">💻 GitHub</a>
-            <a href="img/Currículo.pdf" target="_blank" rel="noopener" style="color:#f0a500; text-decoration:none;" aria-label="Currículo Tayná">🔗 Currículo</a>
+    <section id="contato" aria-label="Contato e Redes">
+        <div class="contact-header">
+            <h2>ENTRE EM CONTATO</h2>
+            <p>Vamos conversar? Me envie um email ou siga-me nas redes sociais!</p>
+        </div>
+        <div class="contact-cards-container">
+            <a href="img/Currículo.pdf" target="_blank" rel="noopener" class="card-link">
+                <div class="card-rede">
+                    <span class="icone-rede">📄</span>
+                    <h3>Currículo</h3>
+                    <p>Baixe meu CV em PDF</p>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/tayn%C3%A1-costa-25231b347/" target="_blank" rel="noopener" class="card-link">
+                <div class="card-rede">
+                    <span class="icone-rede">💼</span>
+                    <h3>LinkedIn</h3>
+                    <p>Meu perfil profissional</p>
+                </div>
+            </a>
+            <a href="https://github.com/Tayna-Costa" target="_blank" rel="noopener" class="card-link">
+                <div class="card-rede">
+                    <span class="icone-rede">💻</span>
+                    <h3>GitHub</h3>
+                    <p>Meus projetos e repositórios</p>
+                </div>
+            </a>
+            <a href="mailto:tayna.cristina215@gmail.com" class="card-link">
+                <div class="card-rede">
+                    <span class="icone-rede">✉️</span>
+                    <h3>E-mail</h3>
+                    <p>Envie uma mensagem</p>
+                </div>
+            </a>
         </div>
     </section>
 </main>
@@ -254,32 +276,31 @@
         }
     });
     // Carrossel de Certificações
-const carouselTrack = document.querySelector('.carousel-track');
-const slides = Array.from(carouselTrack.children);
-const nextButton = document.querySelector('.carousel-button.next');
-const prevButton = document.querySelector('.carousel-button.prev');
-const slideWidth = slides[0].getBoundingClientRect().width + 20; // 20px de margem
+    const carouselTrack = document.querySelector('.carousel-track');
+    const slides = Array.from(carouselTrack.children);
+    const nextButton = document.querySelector('.carousel-button.next');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const slideWidth = slides[0].getBoundingClientRect().width + 20; // 20px de margem
 
-let currentSlideIndex = 0;
+    let currentSlideIndex = 0;
 
-const moveToSlide = (track, targetIndex) => {
-    track.style.transform = `translateX(-${slideWidth * targetIndex}px)`;
-};
+    const moveToSlide = (track, targetIndex) => {
+        track.style.transform = `translateX(-${slideWidth * targetIndex}px)`;
+    };
 
-nextButton.addEventListener('click', () => {
-    if (currentSlideIndex < slides.length - 1) {
-        currentSlideIndex++;
-        moveToSlide(carouselTrack, currentSlideIndex);
-    }
-});
+    nextButton.addEventListener('click', () => {
+        if (currentSlideIndex < slides.length - 1) {
+            currentSlideIndex++;
+            moveToSlide(carouselTrack, currentSlideIndex);
+        }
+    });
 
-prevButton.addEventListener('click', () => {
-    if (currentSlideIndex > 0) {
-        currentSlideIndex--;
-        moveToSlide(carouselTrack, currentSlideIndex);
-    }
-});
-
+    prevButton.addEventListener('click', () => {
+        if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+            moveToSlide(carouselTrack, currentSlideIndex);
+        }
+    });
 </script>
 </body>
 </html>
