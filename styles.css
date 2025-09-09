@@ -1,323 +1,357 @@
- @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
 
-    :root {
-        --bg-main: #35053e;
-        --bg-secondary: #6a2a9f;
-        --text-light: #fff;
-        --text-dark: #333;
-        --btn-bg: #fff;
-        --btn-hover-bg: #52057b;
-    }
+:root {
+    --bg-main: #35053e;
+    --bg-secondary: #6a2a9f;
+    --text-light: #fff;
+    --text-dark: #333;
+    --btn-bg: #fff;
+    --btn-hover-bg: #52057b;
+}
 
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        font-family: 'Roboto', sans-serif;
-        background-color: var(--bg-main);
-        color: var(--text-light);
-        line-height: 1.6;
-        scroll-behavior: smooth;
-    }
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-light);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
 
-    header {
-        background-color: #222;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.7);
-    }
+header {
+    background-color: #222;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
 
-    nav {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-    }
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
 
-    nav a {
-        color: var(--text-light);
-        text-decoration: none;
-        font-weight: 700;
-        margin-left: 1.8rem;
-        font-family: 'Oswald', sans-serif;
-        font-size: 1rem;
-        position: relative;
-        transition: color 0.3s ease;
-    }
-    nav a:hover, nav a.active {
-        color: #f0a500;
-    }
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 1.8rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
 
-    nav a.active::after {
-        content: '';
-        position: absolute;
-        bottom: -6px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background-color: #f0a500;
-        border-radius: 2px;
-    }
+nav a:hover, nav a.active {
+    color: #f0a500;
+}
 
-    main {
-        max-width: 1100px;
-        margin: 100px auto 60px;
-        padding: 0 15px;
-    }
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #f0a500;
+    border-radius: 2px;
+}
 
+main {
+    max-width: 1100px;
+    margin: 100px auto 60px;
+    padding: 0 15px;
+}
+
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 10px;
+    align-items: center;
+    box-shadow: 0 0 15px #52057b;
+}
+
+.about img {
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px #ccc;
+    flex-shrink: 0;
+}
+
+.about-text {
+    flex: 1 1 300px;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.about-text h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.typed-cursor {
+    font-weight: bold;
+    font-size: 2.2rem;
+    color: #f0a500;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Projetos */
+section#projetos {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+section#projetos h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: var(--bg-secondary);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(240, 165, 0, 0.7);
+}
+
+.project-card img {
+    width: 100%;
+    display: block;
+}
+
+.project-content {
+    padding: 1rem 1.2rem 1.5rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-content h3 {
+    margin-bottom: 0.8rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+}
+
+.project-content p {
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.btn-project {
+    background-color: var(--btn-bg);
+    color: var(--bg-secondary);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.1);
+}
+
+.btn-project:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-bg);
+}
+
+/* Seção Certificações */
+section#certificacoes {
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    box-shadow: 0 0 16px #52057b;
+}
+
+section#certificacoes h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 20px;
+    padding: 0 1.5rem 3rem;
+}
+
+.cert-card {
+    background-color: var(--bg-main);
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+    padding: 1.4rem 1.2rem;
+    color: var(--text-light);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.cert-card:hover {
+    box-shadow: 0 6px 25px #f0a500aa;
+}
+
+.cert-card img {
+    max-width: 100px;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+}
+
+.cert-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.cert-card p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #ccc;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-cert {
+    background-color: var(--btn-bg);
+    color: var(--bg-secondary);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-cert:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-bg);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1500;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    position: relative;
+    box-shadow: 0 5px 25px #52057b;
+    overflow: auto;
+    padding: 1rem;
+}
+
+.modal-content iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 8px;
+}
+
+.modal-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--btn-bg);
+    cursor: pointer;
+    user-select: none;
+}
+
+.modal-close:hover {
+    color: #f0a500;
+}
+
+/* Responsivo */
+@media(max-width:700px) {
     .about {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        background-color: var(--bg-secondary);
-        padding: 2rem;
-        border-radius: 10px;
-        align-items: center;
-        box-shadow: 0 0 15px #52057b;
-    }
-
-    .about img {
-        width: 250px;
-        border-radius: 12px;
-        box-shadow: 0 0 8px #ccc;
-        flex-shrink: 0;
-    }
-
-    .about-text {
-        flex: 1 1 300px;
-        font-size: 1.1rem;
-        position: relative;
-    }
-
-    .about-text h1 {
-        font-family: 'Oswald', sans-serif;
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .typed-cursor {
-        font-weight: bold;
-        font-size: 2.2rem;
-        color: #f0a500;
-        animation: blink 0.7s infinite;
-    }
-
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-    
-    /* Projetos */
-    section#projetos {
-        margin-top: 4rem;
-        text-align: center;
-    }
-    section#projetos h2 {
-        font-family: 'Oswald', sans-serif;
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-    }
-    .project-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-        gap: 20px;
-    }
-    .project-card {
-        background-color: var(--bg-secondary);
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 3px 12px rgba(0,0,0,0.7);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-        position: relative;
-        user-select: none;
-    }
-    .project-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 25px rgba(240, 165, 0, 0.7);
-    }
-    .project-card img {
-        width: 100%;
-        display: block;
-    }
-    .project-content {
-        padding: 1rem 1.2rem 1.5rem;
-        color: var(--text-light);
-        font-size: 0.95rem;
-        min-height: 210px;
-        display: flex;
         flex-direction: column;
-        justify-content: space-between;
-    }
-    .project-content h3 {
-        margin-bottom: 0.8rem;
-        font-family: 'Oswald', sans-serif;
-        font-size: 1.5rem;
-    }
-    .project-content p {
-        flex: 1;
-        margin-bottom: 1rem;
-    }
-    .btn-project {
-        background-color: var(--btn-bg);
-        color: var(--bg-secondary);
-        padding: 0.5rem 1rem;
-        font-weight: 600;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.25s ease;
-        text-decoration: none;
-        display: inline-block;
-        box-shadow: 0 2px 7px rgba(0,0,0,0.1);
-    }
-    .btn-project:hover {
-        background-color: var(--btn-hover-bg);
-        color: var(--btn-bg);
-    }
-
-    /* Seção Certificações */
-    section#certificacoes {
-        margin-top: 5rem;
-        padding-bottom: 5rem;
-        background-color: var(--bg-secondary);
-        border-radius: 10px;
-        box-shadow: 0 0 16px #52057b;
-    }
-    section#certificacoes h2 {
-        font-family: 'Oswald', sans-serif;
-        font-size: 2rem;
-        text-align: center;
-        padding-top: 2rem;
-        margin-bottom: 2rem;
-    }
-    .cert-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
-        gap: 20px;
-        padding: 0 1.5rem 3rem;
-    }
-    .cert-card {
-        background-color: var(--bg-main);
-        border-radius: 12px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.8);
-        padding: 1.4rem 1.2rem;
-        color: var(--text-light);
-        text-align: center;
-        transition: box-shadow 0.3s ease;
-        cursor: pointer;
-        user-select: none;
-    }
-    .cert-card:hover {
-        box-shadow: 0 6px 25px #f0a500aa;
-    }
-    .cert-card img {
-        max-width: 100px;
-        margin-bottom: 1rem;
-        border-radius: 6px;
-    }
-    .cert-card h3 {
-        font-family: 'Oswald', sans-serif;
-        font-size: 1.2rem;
-        margin-bottom: 0.4rem;
-    }
-    .cert-card p {
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-        color: #ccc;
-    }
-    .btn-cert {
-        background-color: var(--btn-bg);
-        color: var(--bg-secondary);
-        padding: 0.5rem 1rem;
-        font-weight: 600;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.25s ease;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-        text-decoration: none;
-        display: inline-block;
-    }
-    .btn-cert:hover {
-        background-color: var(--btn-hover-bg);
-        color: var(--btn-bg);
-    }
-
-    /* Modal */
-    .modal {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100vw; height: 100vh;
-        background: rgba(0,0,0,0.7);
-        display: none;
-        justify-content: center;
         align-items: center;
-        z-index: 1500;
-        padding: 1rem;
+        text-align: center;
     }
-    .modal-content {
-        background: var(--bg-secondary);
-        border-radius: 8px;
-        max-width: 900px;
-        width: 90%;
-        max-height: 90vh;
-        position: relative;
-        box-shadow: 0 5px 25px #52057b;
-        overflow: auto;
-        padding: 1rem;
+    .about img {
+        width: 200px;
     }
-    .modal-content iframe {
-        width: 100%;
-        height: 600px;
-        border: none;
-        border-radius: 8px;
+    .about-text {
+        font-size: 1rem;
     }
-    .modal-close {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        font-size: 2rem;
-        font-weight: bold;
-        color: var(--btn-bg);
-        cursor: pointer;
-        user-select: none;
+    nav a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
     }
-    .modal-close:hover {
-        color: #f0a500;
-    }
+}
 
-    /* Responsivo */
-    @media(max-width:700px) {
-        .about {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .about img {
-            width: 200px;
-        }
-        .about-text {
-            font-size: 1rem;
-        }
-        nav a {
-            margin-left: 1rem;
-            font-size: 0.9rem;
-        }
-    }
-   /* Carrossel Certificações */
+/* Carrossel Certificações */
 .carousel-container {
     position: relative;
-    max-width: 900px; /* Ou a largura que você preferir */
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -336,9 +370,10 @@
 
 .carousel-slide {
     flex-shrink: 0;
-    width: 280px; /* Largura fixa para cada card no carrossel */
+    width: 280px;
     margin-right: 20px;
 }
+
 .carousel-slide:last-child {
     margin-right: 0;
 }
@@ -359,36 +394,115 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transition: background-color 0.3s ease;
 }
+
 .carousel-button:hover {
     background-color: #f0a500;
 }
+
 .carousel-button.prev {
     left: -20px;
 }
+
 .carousel-button.next {
     right: -20px;
 }
 
-/* Esconde as setas em telas pequenas */
 @media (max-width: 600px) {
     .carousel-button {
         display: none;
     }
 }
-/* Adicione esta regra ao seu CSS existente para a seção de certificações */
-.cert-card {
-    display: flex; /* Transforma o card em um container flexível */
-    flex-direction: column; /* Organiza o conteúdo em coluna (de cima para baixo) */
-    justify-content: space-between; /* Alinha o conteúdo verticalmente, colocando o botão no final */
-    align-items: center; 
-    height: 100%; /* Garante que o card ocupe 100% da altura do seu container (`carousel-slide`) */
+
+/* --- NOVO DESIGN DE CONTATO (ADAPTADO ÀS SUAS CORES) --- */
+section#contato {
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    box-shadow: 0 0 16px var(--bg-secondary);
 }
 
-/* Adicione esta regra para garantir que os parágrafos tenham uma altura mínima */
-.cert-card p {
-    min-height: 40px; /* Defina uma altura mínima para o parágrafo. Você pode ajustar esse valor. */
+.contact-header {
+    text-align: center;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    margin: 0;
+    color: var(--text-light);
+}
+
+.contact-header p {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0.5rem auto 0;
+}
+
+.contact-cards-container {
     display: flex;
-    align-items: center; /* Centraliza verticalmente o texto do parágrafo */
+    flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 1rem;
-} 
+    gap: 20px;
+    padding: 0 1.5rem 2rem;
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--text-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-basis: 220px;
+    flex-grow: 1;
+    max-width: 250px;
+}
+
+.card-link:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(240, 165, 0, 0.7);
+}
+
+.card-rede {
+    background-color: var(--bg-main);
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+    padding: 1.4rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.icone-rede {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.card-rede h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+    color: var(--text-light);
+}
+
+.card-rede p {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin: 0;
+}
+
+@media (max-width: 500px) {
+    .contact-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-link {
+        flex-basis: auto;
+        width: 100%;
+        max-width: 300px;
+    }
+}
