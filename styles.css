@@ -348,16 +348,31 @@ section#certificacoes h2 {
     }
 }
 
-/* Carrossel Certificações */
+/* * Carrossel Certificações - MODIFICADO E CORRIGIDO
+ * Diminui a largura em desktop e garante o swipe em mobile.
+ */
 .carousel-container {
     position: relative;
-    max-width: 900px;
+    /* REDUZIDO: Para telas grandes, o carrossel fica mais compacto */
+    max-width: 700px; 
     margin: 0 auto;
 }
 
 .carousel-track-container {
-    overflow: hidden;
+    /* MUDANÇA: Permite rolagem horizontal */
+    overflow-x: scroll;
+    /* Adiciona Scroll-Snap para alinhamento forçado */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; 
+
     padding: 0 1.5rem 3rem;
+    
+    /* Oculta a barra de rolagem horizontal */
+    scrollbar-width: none; 
+}
+/* Oculta a barra de rolagem em navegadores Webkit (Chrome, Safari) */
+.carousel-track-container::-webkit-scrollbar {
+    display: none;
 }
 
 .carousel-track {
@@ -365,17 +380,14 @@ section#certificacoes h2 {
     margin: 0;
     list-style: none;
     display: flex;
-    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-slide {
     flex-shrink: 0;
-    width: 280px;
+    /* Mobile: Ocupa 85% da tela para um slide por vez */
+    width: 85%; 
     margin-right: 20px;
-}
-
-.carousel-slide:last-child {
-    margin-right: 0;
+    scroll-snap-align: start; 
 }
 
 .carousel-button {
@@ -408,10 +420,32 @@ section#certificacoes h2 {
 }
 
 @media (max-width: 600px) {
+    /* Esconde os botões em telas muito pequenas (prioriza o swipe) */
     .carousel-button {
         display: none;
     }
 }
+
+
+/* *** NOVO MEDIA QUERY PARA DESKTOP/TABLET (Telas > 768px) *** */
+@media (min-width: 768px) {
+    .carousel-slide {
+        /* Desktop: Define uma largura fixa menor (ex: 250px) */
+        width: 250px; 
+        margin-right: 30px; 
+    }
+    
+    /* Reposiciona os botões para fora do novo contêiner (700px) */
+    .carousel-button.prev {
+        left: -50px; 
+    }
+
+    .carousel-button.next {
+        right: -50px; 
+    }
+}
+/* --- FIM DO MEDIA QUERY DE DESKTOP --- */
+
 
 /* --- NOVO DESIGN DE CONTATO (ADAPTADO ÀS SUAS CORES) --- */
 section#contato {
