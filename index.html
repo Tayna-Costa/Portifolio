@@ -221,7 +221,7 @@
 </div>
 
 <script>
-    // Efeito digitação na seção "Sobre"
+    // Efeito digitação na seção "Sobre" (MANTIDO)
     const text = "OLÁ, EU SOU A TAYNÁ";
     const typedText = document.getElementById('typed-text');
     let index = 0;
@@ -235,7 +235,7 @@
     }
     window.addEventListener('load', typeWriter);
 
-    // Atualiza links ativos no menu
+    // Atualiza links ativos no menu (MANTIDO)
     const navLinks = document.querySelectorAll('nav a');
 
     navLinks.forEach(link => {
@@ -245,7 +245,7 @@
         });
     });
 
-    // Modal para visualizar certificados
+    // Modal para visualizar certificados (MANTIDO)
     const modal = document.getElementById('modal');
     const modalClose = modal.querySelector('.modal-close');
     const modalIframe = modal.querySelector('iframe');
@@ -284,19 +284,45 @@
             modalIframe.src = '';
         }
     });
-    // Carrossel de Certificações
+
+    // **********************************************
+    // Carrossel de Certificações (CÓDIGO MODIFICADO)
+    // **********************************************
     const carouselTrack = document.querySelector('.carousel-track');
     const slides = Array.from(carouselTrack.children);
     const nextButton = document.querySelector('.carousel-button.next');
     const prevButton = document.querySelector('.carousel-button.prev');
-    const slideWidth = slides[0].getBoundingClientRect().width + 20; // 20px de margem
-
+    
     let currentSlideIndex = 0;
 
-    const moveToSlide = (track, targetIndex) => {
-        track.style.transform = `translateX(-${slideWidth * targetIndex}px)`;
+    // Função para obter a largura do slide (corrigida para ser dinâmica e responsiva)
+    const getSlideWidth = () => {
+        if (slides.length > 0) {
+            // Pega a largura calculada do primeiro slide
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            
+            // Pega a margem direita definida no CSS (20px)
+            const slideStyle = window.getComputedStyle(slides[0]);
+            const margin = parseFloat(slideStyle.marginRight) || 0; 
+            
+            return slideWidth + margin;
+        }
+        return 0;
     };
 
+    // Função para mover o carrossel
+    const moveToSlide = (track, targetIndex) => {
+        // Recalcula a largura em cada movimento para garantir precisão
+        const slideWidth = getSlideWidth(); 
+        
+        track.style.transform = `translateX(-${slideWidth * targetIndex}px)`;
+        
+        // Atualiza o estado dos botões para acessibilidade
+        prevButton.disabled = targetIndex === 0;
+        nextButton.disabled = targetIndex === slides.length - 1;
+    };
+
+    // Mover para o próximo (Botão)
     nextButton.addEventListener('click', () => {
         if (currentSlideIndex < slides.length - 1) {
             currentSlideIndex++;
@@ -304,12 +330,56 @@
         }
     });
 
+    // Mover para o anterior (Botão)
     prevButton.addEventListener('click', () => {
         if (currentSlideIndex > 0) {
             currentSlideIndex--;
             moveToSlide(carouselTrack, currentSlideIndex);
         }
     });
+
+    // ** LÓGICA DE DESLIZE (SWIPE) PARA TOUCH **
+    let touchStartX = 0;
+
+    carouselTrack.addEventListener('touchstart', (e) => {
+        // Se já usou scroll-snap no CSS, pode desativar o JS Swipe em telas pequenas
+        if (window.innerWidth <= 600) return; 
+
+        // Registra a posição inicial do toque
+        touchStartX = e.touches[0].clientX;
+    });
+
+    carouselTrack.addEventListener('touchend', (e) => {
+        if (window.innerWidth <= 600) return; 
+        
+        // Posição final do toque
+        const touchEndX = e.changedTouches[0].clientX;
+        const diffX = touchStartX - touchEndX; 
+
+        // Limite mínimo para considerar como um swipe (ex: 50px)
+        const swipeThreshold = 50; 
+
+        if (Math.abs(diffX) > swipeThreshold) {
+            if (diffX > 0) {
+                // Deslize para a esquerda -> Próximo slide
+                nextButton.click();
+            } else {
+                // Deslize para a direita -> Slide anterior
+                prevButton.click();
+            }
+        }
+    });
+
+    // ** RESPONSIVIDADE **
+    // Garante que o carrossel se ajuste se o usuário redimensionar a tela (rotação do celular)
+    window.addEventListener('resize', () => {
+        moveToSlide(carouselTrack, currentSlideIndex);
+    });
+
+    // Inicializa o carrossel ao carregar a página
+        window.addEventListener('load', () => {
+         moveToSlide(carouselTrack, currentSlideIndex);
+         });
 </script>
 </body>
 </html>
