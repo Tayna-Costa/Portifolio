@@ -353,7 +353,6 @@ section#certificacoes h2 {
  */
 .carousel-container {
     position: relative;
-    /* REDUZIDO: Para telas grandes, o carrossel fica mais compacto */
     max-width: 700px; 
     margin: 0 auto;
 }
@@ -364,6 +363,9 @@ section#certificacoes h2 {
     /* Adiciona Scroll-Snap para alinhamento forçado */
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch; 
+    
+    /* CORREÇÃO APLICADA: Adiciona padding no final para evitar o corte do último item */
+    scroll-padding-inline-end: 50px; /* Cria um "espaço de respiro" no final da rolagem */
 
     padding: 0 1.5rem 3rem;
     
@@ -435,6 +437,11 @@ section#certificacoes h2 {
         margin-right: 30px; 
     }
     
+    /* CORREÇÃO APLICADA: Remove a margem do último slide no desktop para evitar espaço extra no final */
+    .carousel-slide:last-child {
+        margin-right: 0;
+    }
+
     /* Reposiciona os botões para fora do novo contêiner (700px) */
     .carousel-button.prev {
         left: -50px; 
